@@ -18,7 +18,9 @@ const formSchema = z.object({
   message: z.string().min(2).max(50),
 })
 
-export default function MessageForm() {
+export default function MessageForm({wsInstance}:{wsInstance:WebSocket|null}) {
+ 
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -29,6 +31,11 @@ export default function MessageForm() {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         console.log(values)
+        if (wsInstance) {
+          wsInstance.send(JSON.stringify(values.message)); // Assuming JSON messages
+        } else {
+          console.error('WebSocket connection not established yet');
+        }
       }
   return (
     <div>
