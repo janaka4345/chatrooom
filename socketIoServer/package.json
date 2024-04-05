@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "nodemon": "nodemon socketIoServer.js"
+    "nodemon": "nodemon socketIoServer.js",
+    "nodemon2": "nodemon socketIoServerWithExpress.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
     "nodemon": "^3.1.0"
   },
   "dependencies": {
+    "express": "^4.19.2",
     "socket.io": "^4.7.5"
   }
 }
